@@ -9,11 +9,13 @@ export default {
     {
       backgroundColor: theme => ({
         'light-gray' : 'var(--light-gray)' ,   
-        'grayish-blue' : 'var(--grayish-blue)' ,       
+        'grayish-blue' : 'var(--grayish-blue)' ,     
+        'moderate-blue' : 'var(--moderate-blue)' ,              
       }),
       textColor: theme => ({
         'light-gray' : 'var(--light-gray)' ,
         'grayish-blue' : 'var(--grayish-blue)' ,
+        'moderate-blue' : 'var(--moderate-blue)' ,              
       })
     },
   },

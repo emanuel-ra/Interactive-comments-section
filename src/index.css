@@ -4,7 +4,7 @@
 
 @layer base{
   :root {
-    --ModerateBlue: hsl(238, 40%, 52%);
+    --moderate-blue: hsl(238, 40%, 52%);
     --SoftRed: hsl(358, 79%, 66%);
     --LightGrayishBlue: hsl(239, 57%, 85%);
     --PaleRed: hsl(357, 100%, 86%);
@@ -14,7 +14,10 @@
     --VeryLightGray: hsl(228, 33%, 97%);
   }    
   main{
-    @apply w-screen min-h-screen bg-light-gray pt-28 px-5
+    @apply w-screen min-h-screen bg-light-gray pt-10 px-5
+  }
+  textarea{
+    @apply w-full border rounded-md
   }
 }
 
@@ -49,4 +52,13 @@
   .replies-container{ 
     @apply w-[85%] flex flex-col gap-3 border-l-2 pl-10 border-black/10
   }
+  .form-post{
+    @apply w-full mt-2 flex bg-white rounded-md p-5 gap-5 shadow-lg
+  }
+  .btn{
+    @apply rounded-sm py-2 px-4 rounded-md
+  }
+  .btn-send{
+    @apply bg-moderate-blue text-white hover:opacity-50
+  }  
 }
