@@ -1,19 +1,37 @@
-import React from 'react'
 import { data } from "../mooks/data"
+import { usePosts } from '../hooks/usePosts'
 
 export default function CreatePost() {
 
+  const {createPost} = usePosts()  
+
+  const handlePost = () => {
+    let comment = document.getElementById('textComment').value;
+
+    if(comment===''){
+      document.getElementById('textComment').focus()
+      return;
+    }   
+
+    const newPost = {
+      ...data.currentUser ,
+      comment
+    }
+
+    createPost(newPost)
+  }
+
   return (
     <>
-        <form action="" className='form-post'>
+        <article className='form-post'>
             <div>
                 <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
             </div>
-            <textarea name="" id="" cols="30" rows="3"></textarea>
+            <textarea name="" id="textComment" rows="3" placeholder='Type your post...'></textarea>
             <div>
-                <button className='btn btn-send'>SEND</button>
+                <button className='btn btn-send' onClick={handlePost}>SEND</button>
             </div>
-        </form>
+        </article>
     </>
   )
 }

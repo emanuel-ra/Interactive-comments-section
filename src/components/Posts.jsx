@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { iconPlus, iconMinus, iconReply, iconDelete, iconEdit } from '../assets/images'
 import ReplyPost from './ReplyPost'
+import { timeAgo } from '../utils/post'
 
-export function Post({ data , currentUser }){
-
+export function Post({ data , currentUser, mainPostId }){
+    
     const [score,setScore] = useState(data.score)
     const [reply,setReply] = useState(false)
 
@@ -36,7 +37,7 @@ export function Post({ data , currentUser }){
                         <span className='block flex items-center gap-2'>
                             <img src={data.user.image.webp} alt="" />                            
                             <span className='font-bold'>{data.user.username}</span>
-                            <small className='font-semibold text-grayish-blue'>{data.createdAt}</small>
+                            <small className='font-semibold text-grayish-blue'>{(Number.isInteger(data.createdAt)) ? timeAgo(data.createdAt):data.createdAt}</small>
                         </span>
                         <span className='p-2 flex gap-2'>
 
@@ -51,6 +52,7 @@ export function Post({ data , currentUser }){
                                     <img src={iconDelete} alt="Reply" /> Delete
                                 </button>                                                                                        
                             }
+
                             {(currentUser===data.user.username) &&                                
                                 <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' >
                                     <img src={iconEdit} alt="Reply" /> Edit
@@ -63,21 +65,20 @@ export function Post({ data , currentUser }){
                 </div>
             </article>
 
-            {reply && <ReplyPost />}
+            {reply && <ReplyPost post={data} mainPostId={mainPostId} />}
         </>
       )
 }
 
 export default function Posts({ data, currentUser }) {
-    //const username  = data.currentUser.username
-  
+    //const username  = data.currentUser.username  
   return (
     <>
        <section className='flex flex-col items-end gap-2'>
-            <Post data={data}/>
-            <div className='replies-container'>
+            <Post data={data} currentUser={currentUser} mainPostId={data.id} />
+            <div className='replies-container mb-3'>
                 {data.replies.map( reply => (
-                    <Post data={reply} currentUser={currentUser} />
+                    <Post key={reply.id} data={reply} currentUser={currentUser} mainPostId={data.id} />
                 ))}
             </div>
        </section>

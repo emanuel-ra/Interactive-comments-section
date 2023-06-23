@@ -53,7 +53,7 @@
     @apply w-[85%] flex flex-col gap-3 border-l-2 pl-10 border-black/10
   }
   .form-post{
-    @apply w-full mt-2 flex bg-white rounded-md p-5 gap-5 shadow-lg
+    @apply w-full flex bg-white rounded-md p-5 gap-5 shadow-lg
   }
   .btn{
     @apply rounded-sm py-2 px-4 rounded-md

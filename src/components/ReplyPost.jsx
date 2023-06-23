@@ -1,13 +1,45 @@
-function ReplyPost({ data }) {
+import { useId } from "react"
+import { data } from "../mooks/data"
+import { usePosts } from "../hooks/usePosts";
+
+function ReplyPost({ post,mainPostId }) {
+  
+  const {replyPost} = usePosts()
+
+
+  const handleReply = () => {    
+    let comment = document.getElementById(`replyTo${post.id}`).value;
+    
+    let commentWithoutUserName;
+    if(comment.includes(`@${post.user.username}`)){
+      commentWithoutUserName = comment.replace(`@${post.user.username}`, '').trim();
+    }
+
+    if(commentWithoutUserName===''){
+      document.getElementById(`replyTo${post.id}`).focus()
+      return;
+    }   
+    const newPost = {
+      ...data.currentUser ,
+      comment ,
+      replyingTo: post.user.username ,     
+      mainPostId:mainPostId
+    }
+    
+    replyPost(newPost)
+    //console.log(newPost)
+    //createPost(newPost)
+  }
+
   return (
     <>
         <form action="" className='form-post'>
             <div>
-                <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
+              <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
             </div>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea id={`replyTo${post.id}`} rows="3" defaultValue={`@${post.user.username} `}></textarea>
             <div>
-                <button className='btn btn-send'>Reply</button>
+                <button type="button" className='btn btn-send' onClick={()=>{handleReply()}}>Reply</button>
             </div>
         </form>
     </>
