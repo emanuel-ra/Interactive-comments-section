@@ -13,6 +13,5 @@ export { default as imageRamsesmironWebp } from './images/avatars/image-ramsesmi
 export { default as iconPlus } from './images/icon-plus.svg'
 export { default as iconMinus } from './images/icon-minus.svg'
 export { default as iconReply } from './images/icon-reply.svg'
-
-
-
+export { default as iconDelete } from './images/icon-delete.svg'
+export { default as iconEdit } from './images/icon-edit.svg'

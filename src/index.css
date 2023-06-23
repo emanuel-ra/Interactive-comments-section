@@ -14,10 +14,10 @@
     --VeryLightGray: hsl(228, 33%, 97%);
   }    
   main{
-    @apply w-screen min-h-screen bg-light-gray pt-10 px-5
+    @apply w-screen min-h-screen bg-light-gray pt-5 px-5 font-Rubik
   }
   textarea{
-    @apply w-full border rounded-md
+    @apply w-full border rounded-md p-2 text-grayish-blue text-lg
   }
 }
 

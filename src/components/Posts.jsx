@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { iconPlus, iconMinus, iconReply } from '../assets/images'
+import { iconPlus, iconMinus, iconReply, iconDelete, iconEdit } from '../assets/images'
 import ReplyPost from './ReplyPost'
 
-export function Post({ data }){
+export function Post({ data , currentUser }){
 
     const [score,setScore] = useState(data.score)
     const [reply,setReply] = useState(false)
@@ -38,10 +38,25 @@ export function Post({ data }){
                             <span className='font-bold'>{data.user.username}</span>
                             <small className='font-semibold text-grayish-blue'>{data.createdAt}</small>
                         </span>
-                        <span className='p-2'>
-                            <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' onClick={handleReply}>
-                                <img src={iconReply} alt="Reply" /> Reply
-                            </button>
+                        <span className='p-2 flex gap-2'>
+
+                            {(currentUser!==data.user.username) &&
+                                <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' onClick={handleReply}>
+                                    <img src={iconReply} alt="Reply" /> Reply
+                                </button>                               
+                            }
+
+                            {(currentUser===data.user.username) &&                                
+                                <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' >
+                                    <img src={iconDelete} alt="Reply" /> Delete
+                                </button>                                                                                        
+                            }
+                            {(currentUser===data.user.username) &&                                
+                                <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' >
+                                    <img src={iconEdit} alt="Reply" /> Edit
+                                </button>                                                                                        
+                            }
+                            
                         </span>
                     </div>
                     <blockquote className='content'>{data.content}</blockquote>
@@ -53,14 +68,16 @@ export function Post({ data }){
       )
 }
 
-export default function Posts({ data }) {
+export default function Posts({ data, currentUser }) {
+    //const username  = data.currentUser.username
+  
   return (
     <>
        <section className='flex flex-col items-end gap-2'>
             <Post data={data}/>
             <div className='replies-container'>
                 {data.replies.map( reply => (
-                    <Post data={reply} />
+                    <Post data={reply} currentUser={currentUser} />
                 ))}
             </div>
        </section>
