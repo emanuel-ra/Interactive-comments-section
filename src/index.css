@@ -61,4 +61,7 @@
   .btn-send{
     @apply bg-moderate-blue text-white hover:opacity-50
   }  
+  .tagname{
+    @apply text-moderate-blue font-semibold
+  }
 }

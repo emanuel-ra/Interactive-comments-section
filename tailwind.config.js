@@ -22,6 +22,7 @@ export default {
       }) ,
       textColor: theme => ({
         'grayish-blue' : 'var(--grayish-blue)' ,    
+        'moderate-blue' : 'var(--moderate-blue)' ,            
       })
     },
   },

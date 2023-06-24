@@ -33,5 +33,6 @@ export const timeAgo = (timestamp) => {
     if(weeks) label = `${weeks} weeks ago`
     if(months) label = `${months} months ago`
     if(years) label = `${years} years ago`    
+    
     return label;
 }

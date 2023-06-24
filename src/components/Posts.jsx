@@ -20,6 +20,11 @@ export function Post({ data , currentUser, mainPostId }){
         setReply(!reply);
     }
 
+    let content = data.content;
+    if(data.hasOwnProperty("replyingTo") && content.includes(`@${data.replyingTo}`)){
+        content = content.replace(`@${data.replyingTo}`, '');
+    }
+
     return (
         <>
             <article className="post">
@@ -61,7 +66,10 @@ export function Post({ data , currentUser, mainPostId }){
                             
                         </span>
                     </div>
-                    <blockquote className='content'>{data.content}</blockquote>
+                    <blockquote className='content'>
+                        <span className='tagname'>{data.replyingTo && `@${data.replyingTo} `}</span>
+                        {content}
+                    </blockquote>
                 </div>
             </article>
 
