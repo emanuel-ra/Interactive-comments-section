@@ -2,26 +2,27 @@ import { data } from "../mooks/data"
 import { nexId } from "../utils/post"
 export const postInitialState = JSON.parse(window.localStorage.getItem('post')) || data.comments
 // * GET THE NEXT ID
-export const postIdInitialState = JSON.parse(window.localStorage.getItem('id')) || nexId({data:data.comments})
+//export const postIdInitialState = JSON.parse(window.localStorage.getItem('id')) || nexId({data:data.comments})
 
 
 export const POST_ACTION_TYPES = {
     CREATE_POST:'CREATE_POST' ,
     REPLY_POST: 'REPLY_POST' ,
     REMOVE_POST:'REMOVE_POST' ,
-    EDIT_POST: 'EDIT_POST'
+    UPDATE_POST: 'UPDATE_POST' ,
+    PLUS_SCORE: 'PLUS_SCORE' ,
+    MINUS_SCORE: 'MINUS_SCORE'
 }
 
 export const updateLocalStorage = (state) => {
-    window.localStorage.setItem('post', JSON.stringify(state));    
-    // * SET DE THE NEXT ID 
-    window.localStorage.setItem('id', postIdInitialState+1);    
+    window.localStorage.setItem('post', JSON.stringify(state));        
 }
 
 const UPDATE_STATE_BY_ACTION = {
     [POST_ACTION_TYPES.CREATE_POST] : (state,action) => {
 
-        const id = postIdInitialState
+        const id = nexId({data:data.comments})
+
         const newState = [
             ...state ,
             {
@@ -38,13 +39,14 @@ const UPDATE_STATE_BY_ACTION = {
                 },
                 replies:[]
             }
-        ]        
+        ]
+
         updateLocalStorage(newState)
         return newState
     },
     [POST_ACTION_TYPES.REPLY_POST] : (state,action) => {
-        const id = postIdInitialState
-        
+        const id = nexId({data:data.comments})
+
         const replyPost = {
             id:id ,
             content:action.payload.comment ,
@@ -71,8 +73,50 @@ const UPDATE_STATE_BY_ACTION = {
     [POST_ACTION_TYPES.REMOVE_POST] : (state,action) => {
         
     },
-    [POST_ACTION_TYPES.EDIT_POST] : (state,action) => {
+    [POST_ACTION_TYPES.UPDATE_POST] : (state,action) => {
         
+        const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);        
+        const newState = structuredClone(state)
+                
+        if(action.payload.mainPostId != action.payload.id){          
+            const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
+            newState[indexPost].replies[indexReply].content = action.comment            
+        }else{
+            newState[indexPost].score = action.comment
+        }
+
+        updateLocalStorage(newState)
+        return newState;
+
+    },
+    [POST_ACTION_TYPES.PLUS_SCORE] : (state,action) => {
+        const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);        
+        const newState = structuredClone(state)
+                
+        if(action.payload.mainPostId != action.payload.id){          
+            const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
+            newState[indexPost].replies[indexReply].score = newState[indexPost].replies[indexReply].score+1
+            
+        }else{
+            newState[indexPost].score = newState[indexPost].score+1
+        }
+
+        updateLocalStorage(newState)
+        return newState;
+    } ,
+    [POST_ACTION_TYPES.MINUS_SCORE] : (state,action) => {
+        const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);        
+        const newState = structuredClone(state)
+                
+        if(action.payload.mainPostId != action.payload.id){          
+            const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
+            newState[indexPost].replies[indexReply].score = newState[indexPost].replies[indexReply].score-1            
+        }else{
+            newState[indexPost].score = newState[indexPost].score-1
+        }
+
+        updateLocalStorage(newState)
+        return newState;
     }
 }
 

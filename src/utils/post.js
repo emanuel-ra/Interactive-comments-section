@@ -11,10 +11,11 @@ export const nexId = ({data})=>{
             })
         }
     })      
+
+    console.log(ids)
     return ids.sort( (a,b)  => { return b-a } )[0]+1;
 }
 export const timeAgo = (timestamp) => {
-    const dateFormat = new Date(timestamp);
 
     const diff  = Math.abs(new Date()-new Date(timestamp) );
 
@@ -22,7 +23,7 @@ export const timeAgo = (timestamp) => {
     let minutes = Math.floor(seconds/60)
     let hours  = Math.floor(minutes/60)
     let days =  Math.floor(hours/24)
-    let weeks =  Math.floor(hours/7)
+    let weeks =  Math.floor(days/7)
     let months =  Math.floor(days/30)
     let years = Math.floor(months/365)
     

@@ -10,17 +10,19 @@ export default {
       backgroundColor:theme => ({
         'light-gray' : 'var(--light-gray)' ,   
         'grayish-blue' : 'var(--grayish-blue)' ,     
-        'moderate-blue' : 'var(--moderate-blue)' ,              
+        'moderate-blue' : 'var(--moderate-blue)' ,
+        'light-grayish-blue' : 'var(--light-grayish-blue)' ,
+        'very-light-gray' : 'var(--very-light-gray)' ,        
       }),
       textColor:theme => ({
         'light-gray' : 'var(--light-gray)' ,
         'grayish-blue' : 'var(--grayish-blue)' ,
         'moderate-blue' : 'var(--moderate-blue)' ,              
       }),
-      fontFamily: theme => ({
+      fontFamily:theme => ({
         'Rubik': ['Rubik', 'sans-serif'] ,
       }) ,
-      textColor: theme => ({
+      textColor:theme => ({
         'grayish-blue' : 'var(--grayish-blue)' ,    
         'moderate-blue' : 'var(--moderate-blue)' ,            
       })

@@ -19,6 +19,7 @@ export default function CreatePost() {
     }
 
     createPost(newPost)
+    document.getElementById('textComment').value = ""
   }
 
   return (

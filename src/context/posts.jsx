@@ -1,4 +1,4 @@
-import { createContext, useReducer,useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { postReducer, postInitialState } from "../reducers/post";
 
 
@@ -17,22 +17,39 @@ function usePostReducer(){
         payload: post
     })
 
-    return {state,createPost,replyPost}
+    const updatePost = post => dispatch({
+        type: 'UPDATE_POST' ,
+        payload: post
+    })
+
+    const plusScore = post => dispatch({
+        type: 'PLUS_SCORE' ,
+        payload: post
+    })
+
+    const minusScore = post => dispatch({
+        type: 'MINUS_SCORE' ,
+        payload: post
+    })
+
+    return {state,createPost,replyPost,plusScore,minusScore,updatePost}
 }
 
 export function PostsProvider({ children }){
 
-    const { state, createPost, replyPost } = usePostReducer()
+    const { state, createPost, replyPost, plusScore, minusScore, updatePost } = usePostReducer()
 
     return (
         <PostsContext.Provider value={{
             posts: state ,
             createPost ,
-            replyPost
+            replyPost ,
+            plusScore ,
+            minusScore ,
+            updatePost
         }}>
             {children}
         </PostsContext.Provider>
     )
-
 }
 

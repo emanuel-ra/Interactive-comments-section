@@ -2,11 +2,10 @@ import { useId } from "react"
 import { data } from "../mooks/data"
 import { usePosts } from "../hooks/usePosts";
 
-function ReplyPost({ post,mainPostId }) {
+function ReplyPost({ post, mainPostId, setReply }) {
   
   const {replyPost} = usePosts()
-
-
+  
   const handleReply = () => {    
     let comment = document.getElementById(`replyTo${post.id}`).value;
     
@@ -27,21 +26,21 @@ function ReplyPost({ post,mainPostId }) {
     }
     
     replyPost(newPost)
-    //console.log(newPost)
-    //createPost(newPost)
+    
+    setReply(false);
   }
 
   return (
     <>
-        <form action="" className='form-post'>
-            <div>
-              <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
-            </div>
-            <textarea id={`replyTo${post.id}`} rows="3" defaultValue={`@${post.user.username} `}></textarea>
-            <div>
-                <button type="button" className='btn btn-send' onClick={()=>{handleReply()}}>Reply</button>
-            </div>
-        </form>
+      <form action="" className='form-post'>
+          <div>
+            <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
+          </div>
+          <textarea id={`replyTo${post.id}`} rows="3" defaultValue={`@${post.user.username} `}></textarea>
+          <div>
+              <button type="button" className='btn btn-send' onClick={()=>{handleReply()}}>Reply</button>
+          </div>
+      </form>
     </>
   )
 }
