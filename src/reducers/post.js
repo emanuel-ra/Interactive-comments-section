@@ -1,9 +1,6 @@
 import { data } from "../mooks/data"
 import { nexId } from "../utils/post"
 export const postInitialState = JSON.parse(window.localStorage.getItem('post')) || data.comments
-// * GET THE NEXT ID
-//export const postIdInitialState = JSON.parse(window.localStorage.getItem('id')) || nexId({data:data.comments})
-
 
 export const POST_ACTION_TYPES = {
     CREATE_POST:'CREATE_POST' ,
@@ -21,7 +18,7 @@ export const updateLocalStorage = (state) => {
 const UPDATE_STATE_BY_ACTION = {
     [POST_ACTION_TYPES.CREATE_POST] : (state,action) => {
 
-        const id = nexId({data:data.comments})
+        const id = nexId({data:state})
 
         const newState = [
             ...state ,
@@ -40,12 +37,12 @@ const UPDATE_STATE_BY_ACTION = {
                 replies:[]
             }
         ]
-
+      
         updateLocalStorage(newState)
         return newState
     },
     [POST_ACTION_TYPES.REPLY_POST] : (state,action) => {
-        const id = nexId({data:data.comments})
+        const id = nexId({data:state})
 
         const replyPost = {
             id:id ,
@@ -61,9 +58,10 @@ const UPDATE_STATE_BY_ACTION = {
                 username:action.payload.username
             }
         }
-
+        
         const index = state.findIndex(post => post.id === action.payload.mainPostId);        
         const newState = structuredClone(state)
+
         newState[index].replies.push(replyPost)
 
         updateLocalStorage(newState)
@@ -87,7 +85,6 @@ const UPDATE_STATE_BY_ACTION = {
 
         updateLocalStorage(newState)
         return newState;
-
     },
     [POST_ACTION_TYPES.PLUS_SCORE] : (state,action) => {
         const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);        
