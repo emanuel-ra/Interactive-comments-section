@@ -5,10 +5,10 @@
 @layer base{
   :root {
     --moderate-blue: hsl(238, 40%, 52%);
-    --SoftRed: hsl(358, 79%, 66%);
+    --soft-red: hsl(358, 79%, 66%);
     --light-grayish-blue: hsl(239, 57%, 85%);
     --PaleRed: hsl(357, 100%, 86%);
-    --DarkBlue: hsl(212, 24%, 26%);
+    --dark-blue: hsl(212, 24%, 26%);
     --grayish-blue: hsl(211, 10%, 45%);
     --light-gray: hsl(223, 19%, 93%);
     --very-light-gray: hsl(228, 33%, 97%);
@@ -50,18 +50,42 @@
     @apply rounded-b-md
   }
   .replies-container{ 
-    @apply w-[85%] flex flex-col gap-3 border-l-2 pl-10 border-black/10
+    @apply w-full lg:w-[85%] flex flex-col gap-3 border-l-2 pl-4 lg:pl-10 border-black/10
   }
   .form-post{
     @apply w-full flex bg-white rounded-md p-5 gap-5 shadow-lg
+  }
+  .form-edit-post{
+    @apply w-full flex bg-white p-5 gap-5
   }
   .btn{
     @apply rounded-sm py-2 px-4 rounded-md
   }
   .btn-send{
     @apply bg-moderate-blue text-white hover:opacity-50
+  } 
+  .btn-cancel{
+    @apply bg-grayish-blue text-white hover:opacity-50
+  }  
+  .btn-confirm{
+    @apply bg-soft-red text-white hover:opacity-50
   }  
   .tagname{
     @apply text-moderate-blue font-semibold
+  }
+  .modal{
+    @apply bg-white rounded-lg p-10 w-1/4 h-64 flex flex-col gap-3 shadow-lg justify-between fixed
+  }
+  .modal h3{
+    @apply text-lg font-semibold 
+  }
+  .modal span{
+    @apply text-base text-grayish-blue
+  }
+  .modal .actions{
+    @apply flex justify-between gap-2
+  }
+  .modal .actions .btn{
+    @apply w-1/2 shadow-md py-3
   }
 }

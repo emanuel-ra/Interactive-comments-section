@@ -12,7 +12,9 @@ export default {
         'grayish-blue' : 'var(--grayish-blue)' ,     
         'moderate-blue' : 'var(--moderate-blue)' ,
         'light-grayish-blue' : 'var(--light-grayish-blue)' ,
-        'very-light-gray' : 'var(--very-light-gray)' ,        
+        'very-light-gray' : 'var(--very-light-gray)' ,  
+        'dark-blue' : 'var(--dark-blue)' ,  
+        'soft-red' : 'var(--soft-red)' ,  
       }),
       textColor:theme => ({
         'light-gray' : 'var(--light-gray)' ,

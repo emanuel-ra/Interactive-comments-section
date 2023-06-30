@@ -10,9 +10,10 @@ export default function Post({ data , currentUser, mainPostId }) {
     const [reply,setReply] = useState(false) 
     const [edit,setEdit] = useState(false) 
 
+    const { plusScore, minusScore, confirmDeletePost, setConfirmDeletePost,setDeletePost } = usePosts();
+
     const bodyPostId = useId();
     const EditPostId = useId();
-    const ReplyPostId = useId();
 
     const handleReply = () =>{
         setReply(!reply);
@@ -21,8 +22,12 @@ export default function Post({ data , currentUser, mainPostId }) {
     const handleEdit = () =>{
         setEdit(!edit);
     }
-
-    const { plusScore, minusScore } = usePosts();
+   
+    const handleDelete = () => {
+        const post = { mainPostId , ...data }
+        setConfirmDeletePost(!confirmDeletePost)        
+        setDeletePost(post)        
+    }
 
     const handleScorePlus = () =>{
         const post = { mainPostId , ...data }
@@ -50,7 +55,6 @@ export default function Post({ data , currentUser, mainPostId }) {
 
                 <div className='body'>
                     <div className='user'>
-
                         <span className='block flex items-center gap-2'>
                             <img src={data.user.image.webp} alt="" />                            
                             <span className='font-bold'>{data.user.username}</span>
@@ -61,7 +65,6 @@ export default function Post({ data , currentUser, mainPostId }) {
                         </span>
 
                         <span className='p-2 flex gap-2'>
-
                             {(currentUser!==data.user.username) &&
                                 <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' onClick={handleReply}>
                                     <img src={iconReply} alt="Reply" /> Reply
@@ -69,7 +72,7 @@ export default function Post({ data , currentUser, mainPostId }) {
                             }
 
                             {(currentUser===data.user.username) && 
-                                <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' >
+                                <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' onClick={handleDelete} >
                                     <img src={iconDelete} alt="Reply" /> Delete
                                 </button>                                                                                        
                             }
@@ -83,8 +86,7 @@ export default function Post({ data , currentUser, mainPostId }) {
                     </div>
                             
                     {!edit && <BodyPost key={bodyPostId} data={data} currentUser={currentUser} mainPostId={mainPostId} />}
-                    {edit && <EditPost key={EditPostId} data={data} currentUser={currentUser} mainPostId={mainPostId} />}
-
+                    {edit && <EditPost key={EditPostId} data={data} currentUser={currentUser} mainPostId={mainPostId} edit={edit} setEdit={setEdit} />}
                 </div>
 
             </article>

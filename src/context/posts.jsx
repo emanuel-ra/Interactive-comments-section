@@ -4,7 +4,7 @@ import { postReducer, postInitialState } from "../reducers/post";
 
 export const PostsContext = createContext()
 
-function usePostReducer(){
+function usePostReducer(){    
     const [state,dispatch] = useReducer(postReducer, postInitialState)
 
     const createPost = post => dispatch({
@@ -22,6 +22,11 @@ function usePostReducer(){
         payload: post
     })
 
+    const removePost = post => dispatch({
+        type: 'REMOVE_POST' ,
+        payload: post
+    })
+   
     const plusScore = post => dispatch({
         type: 'PLUS_SCORE' ,
         payload: post
@@ -32,12 +37,23 @@ function usePostReducer(){
         payload: post
     })
 
-    return {state,createPost,replyPost,plusScore,minusScore,updatePost}
+    
+    return {state,createPost,replyPost,plusScore,minusScore,updatePost,removePost}
 }
+
+function useModalConfirm(){
+    const [confirmDeletePost, setConfirmDeletePost] = useState(false)
+    const [deletePost, setDeletePost] = useState()
+    
+    return { confirmDeletePost, setConfirmDeletePost,deletePost, setDeletePost }
+}
+
 
 export function PostsProvider({ children }){
 
-    const { state, createPost, replyPost, plusScore, minusScore, updatePost } = usePostReducer()
+    const { state, createPost, replyPost, plusScore, minusScore, updatePost, removePost } = usePostReducer()    
+    const { confirmDeletePost, setConfirmDeletePost,deletePost, setDeletePost } = useModalConfirm();
+  
 
     return (
         <PostsContext.Provider value={{
@@ -46,7 +62,12 @@ export function PostsProvider({ children }){
             replyPost ,
             plusScore ,
             minusScore ,
-            updatePost
+            updatePost ,
+            removePost ,
+            confirmDeletePost , 
+            setConfirmDeletePost ,
+            deletePost, 
+            setDeletePost ,
         }}>
             {children}
         </PostsContext.Provider>

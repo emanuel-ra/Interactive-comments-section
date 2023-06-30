@@ -70,15 +70,27 @@ const UPDATE_STATE_BY_ACTION = {
     },
     [POST_ACTION_TYPES.REMOVE_POST] : (state,action) => {
         
+        const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);    
+        let newState = structuredClone(state)
+
+        if(action.payload.mainPostId != action.payload.id){    
+            //const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
+            newState[indexPost].replies = state[indexPost].replies.filter( post => post.id !== action.payload.id)            
+            console.log(newState)
+        }else{
+            newState = state.filter( post => post.id !== action.payload.id)
+        }
+        
+        updateLocalStorage(newState)
+        return newState;
     },
     [POST_ACTION_TYPES.UPDATE_POST] : (state,action) => {
-        
+       
         const indexPost = state.findIndex(post => post.id === action.payload.mainPostId);        
         const newState = structuredClone(state)
-                
         if(action.payload.mainPostId != action.payload.id){          
             const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
-            newState[indexPost].replies[indexReply].content = action.comment            
+            newState[indexPost].replies[indexReply].content = action.payload.comment            
         }else{
             newState[indexPost].score = action.comment
         }

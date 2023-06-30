@@ -1,7 +1,7 @@
 import { useId } from "react"
 import { usePosts } from "../hooks/usePosts";
 
-function EditPost({ data, mainPostId, }) {
+function EditPost({ data, mainPostId, edit, setEdit }) {
   const textAreaId = useId();
 
   const { updatePost } = usePosts()
@@ -22,10 +22,11 @@ function EditPost({ data, mainPostId, }) {
     }
 
     updatePost(newPost)
+    setEdit(!edit)
   }
 
   return (
-    <article className='form-post'>        
+    <article className='form-edit-post'>        
         <textarea name="" id={textAreaId} rows="3" placeholder='Type your post...' defaultValue={data.content}></textarea>
         <div>
             <button className='btn btn-send' onClick={handlePost}>UPDATE</button>
