@@ -92,7 +92,7 @@ const UPDATE_STATE_BY_ACTION = {
             const indexReply =  state[indexPost].replies.findIndex(post => post.id === action.payload.id);      
             newState[indexPost].replies[indexReply].content = action.payload.comment            
         }else{
-            newState[indexPost].score = action.comment
+            newState[indexPost].content = action.payload.comment
         }
 
         updateLocalStorage(newState)

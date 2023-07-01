@@ -74,7 +74,7 @@
     @apply text-moderate-blue font-semibold
   }
   .modal{
-    @apply bg-white rounded-lg p-10 w-1/4 h-64 flex flex-col gap-3 shadow-lg justify-between fixed
+    @apply bg-white rounded-lg p-10 w-[90%] lg:w-1/4 h-64 flex flex-col gap-3 shadow-lg justify-between fixed
   }
   .modal h3{
     @apply text-lg font-semibold 
