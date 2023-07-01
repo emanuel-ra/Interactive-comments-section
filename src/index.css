@@ -37,17 +37,17 @@
   .post > .body > .content{
     @apply text-grayish-blue pr-5
   }
-  .post > .btn-group{
-    @apply lg:flex lg:flex-col lg:h-24 lg:block
+  .post .btn-group{
+    @apply lg:flex-col lg:h-24
   }
-  .post > .btn-group button{
-    @apply w-8 h-1/3  p-2 flex justify-center items-center bg-very-light-gray font-bold text-moderate-blue
+  .post .btn-group button{
+    @apply lg:w-8 lg:h-1/3  p-2 flex justify-center items-center bg-very-light-gray font-bold text-moderate-blue
   }
-  .post > .btn-group button:first-child{
-    @apply rounded-t-md
+  .post .btn-group button:first-child{
+    @apply rounded-l-md lg:rounded-l-none lg:rounded-t-md
   }
-  .post > .btn-group button:last-child{
-    @apply rounded-b-md
+  .post .btn-group button:last-child{
+    @apply rounded-r-md lg:rounded-r-none lg:rounded-b-md
   }
   .replies-container{ 
     @apply w-full lg:w-[85%] flex flex-col gap-3 border-l-2 pl-4 lg:pl-10 border-black/10
@@ -56,7 +56,7 @@
     @apply w-full flex flex-wrap lg:flex-nowrap lg:flex-row bg-white rounded-md p-5 gap-5 shadow-lg
   }
   .form-edit-post{
-    @apply w-full flex bg-white p-5 gap-5
+    @apply w-full flex flex-col gap-2 lg:flex-row bg-white lg:p-5 lg:gap-5
   }
   .btn{
     @apply rounded-sm py-2 px-4 rounded-md
