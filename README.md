@@ -2,7 +2,7 @@
 # VS Frontend Mentor - Interactive comments section 📝 
 This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-![Design preview for the Interactive comments section coding challenge](./src/design/desktop-preview.jpgscreenshot.jpg)
+![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpgscreenshot.jpg)
 
 ## Table of contents
 
@@ -31,9 +31,9 @@ Users should be able to:
 
 ### Screenshot
 
-![Macbook Pro](./Screenshot/Macbook Pro-1688239637396.jpeg)
+![Macbook Pro](./Screenshot/MacbookPro-1688239637396.jpeg)
 
-![iPhone 12 Pro](./Screenshot/iPhone 12 Pro-1688239637426.jpeg)
+![iPhone 12 Pro](./Screenshot/iPhone12Pro-1688239637426.jpeg)
 
 ![iPad](./Screenshot/iPad-1688239637423.jpeg)
 
