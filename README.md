@@ -2,7 +2,7 @@
 # VS Frontend Mentor - Interactive comments section 📝 
 This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-![](./design/desktop-preview.jpgscreenshot.jpg)
+![desktop-preview](./design/desktop-design.jpg)
 
 ## Table of contents
 
