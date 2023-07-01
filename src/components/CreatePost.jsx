@@ -24,12 +24,12 @@ export default function CreatePost() {
 
   return (
     <>
-        <article className='form-post'>
-            <div>
+        <article className='form-post justify-between'>
+            <div className="order-2 lg:order-1 w-1/3 lg:w-24">
                 <img src={data.currentUser.image.webp} alt={data.currentUser.username} className='' />
             </div>
-            <textarea name="" id="textComment" rows="3" placeholder='Type your post...'></textarea>
-            <div>
+            <textarea className="order-1 w-full" name="" id="textComment" rows="3" placeholder='Add a comment...'></textarea>
+            <div className="w-1/3 lg:w-24 flex items-start justify-end g:w-24 order-3">
                 <button className='btn btn-send' onClick={handlePost}>SEND</button>
             </div>
         </article>

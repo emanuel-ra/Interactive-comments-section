@@ -5,6 +5,7 @@ import  BodyPost  from "./BodyPost"
 import  ReplyPost  from "./ReplyPost"
 import EditPost from "./EditPost";
 import { timeAgo } from "../utils/post";
+import PostScoreButtons from "./PostScoreButtons";
 
 export default function Post({ data , currentUser, mainPostId }) {
     const [reply,setReply] = useState(false) 
@@ -38,19 +39,12 @@ export default function Post({ data , currentUser, mainPostId }) {
         const post = { mainPostId , ...data }
         minusScore(post)
     }
-
+    
     return (
         <>
             <article className="post">
-
-                <div className='btn-group'>
-                    <button onClick={handleScorePlus}>
-                        <img src={iconPlus} alt="Plus One" />
-                    </button>
-                    <button>{data.score}</button>
-                    <button type='button' onClick={handleScoreMinus}>
-                        <img src={iconMinus} alt="Minus One" />
-                    </button>
+                <div className='hidden btn-group'>
+                    <PostScoreButtons handleScorePlus={handleScorePlus} handleScoreMinus={handleScoreMinus} score={data.score} />
                 </div>
 
                 <div className='body'>
@@ -64,7 +58,7 @@ export default function Post({ data , currentUser, mainPostId }) {
                             <small className='font-semibold text-grayish-blue'>{(Number.isInteger(data.createdAt)) ? timeAgo(data.createdAt):data.createdAt}</small>
                         </span>
 
-                        <span className='p-2 flex gap-2'>
+                        <span className='lg:p-2 lg:flex lg:gap-2 hidden'>
                             {(currentUser!==data.user.username) &&
                                 <button className='flex gap-2 items-center text-moderate-blue font-semibold hover:opacity-50' onClick={handleReply}>
                                     <img src={iconReply} alt="Reply" /> Reply
