@@ -31,11 +31,14 @@ Users should be able to:
 
 ### Screenshot
 
+#### Macbook Proo
 ![MacbookPro](./Screenshot/MacbookPro-1688239637396.jpeg)
 
-![iPhone12Pro](./Screenshot/iPhone12Pro-1688239637426.jpeg)
-
+#### Ipad
 ![iPad](./Screenshot/iPad-1688239637423.jpeg)
+
+#### Iphone 12 Pro
+![iPhone12Pro](./Screenshot/iPhone12Pro-1688239637426.jpeg)
 
 
 ### Links
