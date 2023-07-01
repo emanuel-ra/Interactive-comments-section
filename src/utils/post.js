@@ -30,3 +30,22 @@ export const timeAgo = (timestamp) => {
     
     return label;
 }
+export const stringToTimestamps = (timeString) => {
+
+    const number = timeString.split(' ')[0]
+    const type = timeString.split(' ')[1]
+    let currentDate = new Date();
+
+    if(type === "years"){
+        currentDate.setFullYear(currentDate.getFullYear() - number)
+    }
+    if(type == "months"){
+        currentDate.setMonth(currentDate.getDate() - number)
+    }
+
+    if(type == "days"){      
+        currentDate = new Date(new Date().setDate(new Date().getDate() - 5));    
+    }
+    
+    return Date.parse(currentDate)/1000
+}
