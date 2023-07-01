@@ -5,6 +5,7 @@ import { usePosts } from './hooks/usePosts';
 import { data } from './mooks/data'
 import ConfirmDeletePost from './components/ConfirmDeletePost';
 import { stringToTimestamps } from './utils/post';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <CreatePost />
         </section>
         <ConfirmDeletePost />
+        <Footer />
       </main>
     </>
   )
