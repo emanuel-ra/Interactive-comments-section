@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useId } from "react"
 import { usePosts } from "../hooks/usePosts";
 
@@ -33,6 +34,13 @@ function EditPost({ data, mainPostId, edit, setEdit }) {
         </div>
     </article>
   )
+}
+
+EditPost.propTypes = {
+  data: PropTypes.object.isRequired ,
+  mainPostId: PropTypes.number.isRequired ,
+  edit: PropTypes.bool ,
+  setEdit: PropTypes.func.isRequired ,
 }
 
 export default EditPost

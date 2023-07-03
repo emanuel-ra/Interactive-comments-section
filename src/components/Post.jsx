@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import { useId, useState } from "react";
-import { usePosts } from "../hooks/usePosts"
-import BodyPost  from "./BodyPost"
-import ReplyPost  from "./ReplyPost"
-import EditPost from "./EditPost";
+import { usePosts } from "../hooks/usePosts";
 import { timeAgo } from "../utils/post";
-import PostScoreButtons from "./PostScoreButtons";
+import BodyPost from "./BodyPost";
+import EditPost from "./EditPost";
 import PostActions from "./PostActions";
+import PostScoreButtons from "./PostScoreButtons";
+import ReplyPost from "./ReplyPost";
 
 export default function Post({ data , currentUser, mainPostId }) {
     const [reply,setReply] = useState(false) 
@@ -46,7 +47,7 @@ export default function Post({ data , currentUser, mainPostId }) {
     return (
         <>
             <article className="post">
-                <h3 class="sr-only">Post #{data.id} </h3>
+                <h3 className="sr-only">Post #{data.id} </h3>
                 <div className='hidden lg:flex btn-group'>
                     <PostScoreButtons handleScorePlus={handleScorePlus} handleScoreMinus={handleScoreMinus} score={data.score} />
                 </div>
@@ -87,4 +88,10 @@ export default function Post({ data , currentUser, mainPostId }) {
             {reply && <ReplyPost key={`replyToPost${data.id}`} post={data} mainPostId={mainPostId} setReply={setReply}  />}
         </>
     )
+}
+
+Post.propTypes = {
+    data: PropTypes.object.isRequired ,
+    currentUser: PropTypes.object.isRequired ,
+    mainPostId: PropTypes.number.isRequired ,
 }

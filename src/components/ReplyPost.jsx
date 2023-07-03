@@ -1,6 +1,6 @@
-import { useId } from "react"
-import { data } from "../mooks/data"
 import { usePosts } from "../hooks/usePosts";
+import { data } from "../mooks/data";
+import PropTypes from 'prop-types'; // ES6
 
 function ReplyPost({ post, mainPostId, setReply }) {
   
@@ -43,6 +43,12 @@ function ReplyPost({ post, mainPostId, setReply }) {
       </form>
     </>
   )
+}
+
+ReplyPost.propTypes  = {
+  post: PropTypes.object.isRequired ,
+  mainPostId: PropTypes.number ,
+  setReply: PropTypes.func
 }
 
 export default ReplyPost

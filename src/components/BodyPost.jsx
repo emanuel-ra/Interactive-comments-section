@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; // 
 import { useId } from "react";
 
 function BodyPost({ data }) {
@@ -12,5 +13,10 @@ function BodyPost({ data }) {
         </>
     )
 }
+
+BodyPost.propTypes = {
+    data: PropTypes.object.isRequired 
+}
+
 
 export default BodyPost

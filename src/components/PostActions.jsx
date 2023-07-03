@@ -1,4 +1,5 @@
 import { iconDelete, iconEdit, iconReply } from "../assets/images";
+import PropTypes from 'prop-types';
 
 function PostActions({ isUserLogged, handleReply, handleDelete, handleEdit }) {
   return (
@@ -22,6 +23,13 @@ function PostActions({ isUserLogged, handleReply, handleDelete, handleEdit }) {
         }    
     </>
   )
+}
+
+PostActions.propTypes = {
+    isUserLogged: PropTypes.bool ,
+    handleReply: PropTypes.func.isRequired ,
+    handleDelete: PropTypes.func.isRequired ,
+    handleEdit: PropTypes.func.isRequired ,
 }
 
 export default PostActions

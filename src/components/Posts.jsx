@@ -1,4 +1,5 @@
 import Post from "./Post"
+import PropTypes from 'prop-types';
 
 export default function Posts({ data, currentUser }) {
   
@@ -15,4 +16,10 @@ export default function Posts({ data, currentUser }) {
       </section>
     </>
   )
+}
+
+
+Posts.propTypes = {
+  data: PropTypes.object ,
+  currentUser: PropTypes.object
 }

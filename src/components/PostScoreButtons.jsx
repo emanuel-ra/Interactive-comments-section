@@ -1,4 +1,5 @@
 import { iconMinus, iconPlus } from "../assets/images";
+import PropTypes from 'prop-types'; // 
 
 export default function PostScoreButtons({handleScorePlus,handleScoreMinus, score}) {
   return (
@@ -12,4 +13,10 @@ export default function PostScoreButtons({handleScorePlus,handleScoreMinus, scor
         </button>
     </>
   )
+}
+
+PostScoreButtons.propTypes = {
+  handleScorePlus: PropTypes.func ,
+  handleScoreMinus: PropTypes.func ,
+  score: PropTypes.number
 }
