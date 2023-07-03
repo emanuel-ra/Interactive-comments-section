@@ -46,6 +46,7 @@ export default function Post({ data , currentUser, mainPostId }) {
     return (
         <>
             <article className="post">
+                <h3 class="sr-only">Post #{data.id} </h3>
                 <div className='hidden lg:flex btn-group'>
                     <PostScoreButtons handleScorePlus={handleScorePlus} handleScoreMinus={handleScoreMinus} score={data.score} />
                 </div>

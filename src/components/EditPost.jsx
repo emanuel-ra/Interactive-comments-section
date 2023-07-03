@@ -27,7 +27,7 @@ function EditPost({ data, mainPostId, edit, setEdit }) {
 
   return (
     <article className='form-edit-post'>        
-        <textarea name="" id={textAreaId} rows="3" placeholder='Type your post...' defaultValue={data.content}></textarea>
+        <textarea name={textAreaId} id={textAreaId} rows="3" placeholder='Type your post...' defaultValue={data.content}></textarea>
         <div>
             <button className='btn btn-send' onClick={handlePost}>UPDATE</button>
         </div>
