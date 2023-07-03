@@ -26,6 +26,7 @@ function App() {
   //const orderedPost = orderReplies.sort( (a,b) => { return b.score-a.score });
   return (
     <>
+      <h1 className='sr-only'>Interactive comments section challenge on Frontend Mentor</h1>
       <main className='relative'>
         <section className='container' id={containerId}>
           {posts.map(element => (
